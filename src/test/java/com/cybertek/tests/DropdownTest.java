@@ -57,5 +57,27 @@ public class DropdownTest {
         String actualSelectedOption = orderSelect.getFirstSelectedOption().getText();
         Assert.assertEquals(actualSelectedOption,expectedSelectedOption,"First option selected is not as expected");
 
+        //adım 4
+        orderSelect.selectByVisibleText("FamilyAlbum");
+        WebElement quantityBox = driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity"));
+        quantityBox.clear();
+        quantityBox.sendKeys("2");
+
+        WebElement calculate= driver.findElement(By.cssSelector("input[type='submit']"));
+        calculate.click();
+
+        //adım 5
+        int expectedPrice = 160;
+
+        WebElement totalPrice = driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtTotal"));
+
+        WebElement pricePerUnit = driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtUnitPrice"));
+
+
+        int actualPrice = Integer.parseInt(quantityBox.getAttribute("value")) * Integer.parseInt(pricePerUnit.getAttribute("value"));
+
+        Assert.assertEquals(actualPrice,expectedPrice,"failed");
+
+
     }
 }
