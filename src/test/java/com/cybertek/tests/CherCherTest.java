@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
     2. Click on "Enable button after 10 seconds"
     3. Explicitly wait until the button is enabled
     4. Then verify the button is enabled
-     */
+ */
 public class CherCherTest {
 
     WebDriver driver;
